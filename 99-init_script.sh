@@ -27,6 +27,8 @@ if [ -f "/etc/config/dhcp" ]; then
 		option ip '$WRT_IPPART.10' 
 	" >> /etc/config/dhcp
 	echo "dhcp自定义设置完成"
+else
+	echo "dhcp自定义未初始化"
 fi
 
 if [ -f "/etc/config/socat" ]; then
@@ -45,6 +47,8 @@ if [ -f "/etc/config/socat" ]; then
 		option firewall_accept '1'
 	" >> /etc/config/socat
 	echo "socat自定义设置完成"
+else
+	echo "socat自定义未初始化"
 fi
 
 if [ -f "/etc/config/firewall" ]; then
@@ -58,6 +62,8 @@ if [ -f "/etc/config/firewall" ]; then
         option device 'br-lan'
 	" >> /etc/config/firewall
 	echo "firewall自定义设置完成"
+else
+	echo "firewall自定义未初始化"
 fi
 
 if [ -f "/etc/config/ddns" ]; then
@@ -79,6 +85,8 @@ if [ -f "/etc/config/ddns" ]; then
         option interface 'pppoe-wan'
 	" >> /etc/config/ddns
 	echo "ddns自定义设置完成"
+else
+	echo "ddns自定义未初始化"
 fi
 if [ -f "/etc/config/zerotier" ]; then
 	echo " 
@@ -88,4 +96,6 @@ if [ -f "/etc/config/zerotier" ]; then
         option nat '1'
  	" > /etc/config/zerotier
 	echo "zerotier自定义设置完成"
+else
+	echo "zerotier自定义未初始化"
 fi
