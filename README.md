@@ -81,6 +81,12 @@
 
 </details>
 
+## 刷完机初始化:
+
+    wget https://github.com/ftkey/OpenWRT-CI/raw/refs/heads/private/99-init_script.sh
+    vi ./99-init_script.sh
+    bash ./99-init_script.sh
+
 
 ## THKS
 VIKINGYFY | LiBwrt-op | laipeng668 | ImmortalWRT | LEDE
