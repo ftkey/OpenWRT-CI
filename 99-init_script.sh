@@ -2,12 +2,14 @@
 
 WRT_IP="192.168.10.1"
 WRT_IPPART=$(echo $WRT_IP | cut -d'.' -f1-3)
+WRT_Backup_Path="/mnt/mmcblk0p23/"
 PRIVATE_WRT_ddns_domain=''
 PRIVATE_WRT_ddns_username=''
 PRIVATE_WRT_ddns_password=''
 PRIVATE_WRT_zerotier_id=''
 PRIVATE_WRT_pppoe_username=''
 PRIVATE_WRT_pppoe_password=''
+
 
 if [ -f "/etc/config/dhcp" ]; then
 	echo " 
@@ -99,3 +101,24 @@ if [ -f "/etc/config/zerotier" ]; then
 else
 	echo "zerotier自定义未初始化"
 fi
+
+if [ -d $WRT_Backup_Path ]; then
+	echo "
+	backupfilename=$(date +%Y%m%d_%H%M%S)
+	tar -czvf $backuppath1/openwrt-backup_$backupfilename-etc.tar.gz /etc 
+	opkg list-installed > $backuppath1/openwrt-backup_$backupfilename-soft-list.txt
+ 	" > $WRT_Backup_Path/auto_backup.sh
+	chmod +x $WRT_Backup_Path/auto_backup.sh
+	echo "auto_backup自定义设置完成"
+	if [ -f "/etc/crontabs/root" ]; then
+		echo "
+		0 5 * * *  $WRT_Backup_Path/auto_backup.sh
+		" >> /etc/crontabs/root
+		echo "crontabs自定义设置完成"
+	fi
+else
+	echo "auto_backup自定义未初始化"
+fi
+
+
+
