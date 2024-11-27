@@ -83,7 +83,7 @@
 
 ## 刷完机初始化:
 
-    wget https://github.com/ftkey/OpenWRT-CI/raw/refs/heads/private/99-init_script.sh
+    wget https://github.com/ftkey/OpenWRT-CI/raw/refs/heads/private/99-init_script.sh -O 99-init_script.sh
     vi ./99-init_script.sh
     bash ./99-init_script.sh
 
