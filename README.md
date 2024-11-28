@@ -1,6 +1,12 @@
 # ER1-WRT-CI
 京东云ER1 (设备型号: qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-07)
 
+
+# 9008 & TTL 下刷UBoot方法
+
+<https://huawei.aito.eu.org/318.html>
+
+
 # SSH下刷UBoot方法
 
 千万**不要批量处理**,确保每个命令是否正确执行
