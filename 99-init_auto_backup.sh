@@ -1,6 +1,6 @@
 #!/bin/bash
 
-storage_dev_path=$(blkid | grep -E 'PARTLABEL="storage"|PARTLABEL="primary"' | awk '{print $1}' | sed 's/:$//')
+storage_dev_path=$(blkid | grep -E '^/dev/mmc' | grep -E 'PARTLABEL="storage"|PARTLABEL="primary"' | awk '{print $1}' | sed 's/:$//')
 storage_path=$(mount | grep "$storage_dev_path" | awk '{print $3}')
 
 if cmd=$(command -v apk) > /dev/null; then
