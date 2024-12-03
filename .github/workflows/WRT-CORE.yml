@@ -13,9 +13,6 @@ on:
       WRT_NAME:
         required: true
         type: string
-      WRT_WIFI:
-        required: true
-        type: string
       WRT_IP:
         required: true
         type: string
@@ -46,7 +43,6 @@ env:
   WRT_TARGET: ${{inputs.WRT_TARGET}}
   WRT_THEME: ${{inputs.WRT_THEME}}
   WRT_NAME: ${{inputs.WRT_NAME}}
-  WRT_WIFI: ${{inputs.WRT_WIFI}}
   WRT_IP: ${{inputs.WRT_IP}}
   WRT_PW: ${{inputs.WRT_PW}}
   WRT_REPO: ${{inputs.WRT_REPO}}
@@ -63,7 +59,7 @@ jobs:
     steps:
       - name: Checkout Projects
         uses: actions/checkout@main
-          
+
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@main
         with:
@@ -97,7 +93,7 @@ jobs:
           sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
-          
+
       - name: Initialization Values
         run: |
           export WRT_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
@@ -189,7 +185,8 @@ jobs:
 
           make defconfig -j$(nproc)
           ./scripts/diffconfig.sh > seed.config
-           
+          cat seed.config
+
       - name: Download Packages
         if: env.WRT_TEST != 'true'
         run: |
@@ -215,7 +212,7 @@ jobs:
           echo "======================="
           du -h --max-depth=1
           echo "======================="
-          
+
       - name: Package Firmware
         run: |
           cd ./wrt/ && mkdir ./upload/
@@ -223,15 +220,6 @@ jobs:
           cp -f ./.config ./upload/Config_"$WRT_TARGET"_"$WRT_NAME"_"$WRT_VER"_"$WRT_DATE".txt
           cp -f ./seed.config ./upload/Config_"$WRT_TARGET"_"$WRT_NAME"_"$WRT_VER"_"$WRT_DATE".seed.txt
 
-          
-          
-          if [ -d "./bin/targets/" ]; then
-            find ./bin/targets/ -type f -exec sh -c 'echo -n "{} "; du -b "{}" | cut -f1 | awk '"'"'{ if ($1 < 1024*1024) printf "%.2fKB\n", $1/1024; else printf "%.2fMB\n", $1/(1024*1024); }'"'" \;          
-          fi
-          if [ -d "./bin/packages/" ]; then
-            find ./bin/packages/ -type f -exec sh -c 'echo -n "{} "; du -b "{}" | cut -f1 | awk '"'"'{ if ($1 < 1024*1024) printf "%.2fKB\n", $1/1024; else printf "%.2fMB\n", $1/(1024*1024); }'"'" \; | sort -n -k2,2 -r        
-          fi
-          
           if [[ $WRT_TEST != 'true' ]]; then
             find ./bin/targets/ -iregex ".*\(buildinfo\|json\|manifest\|sha256sums\|packages\)$" -exec rm -rf {} +
 

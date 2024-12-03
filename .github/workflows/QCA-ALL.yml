@@ -49,8 +49,6 @@ jobs:
       WRT_THEME: argon
       #默认主机名
       WRT_NAME: ${{matrix.REPO_INFO.NAME}}
-      #默认WIFI名
-      WRT_WIFI: ${{matrix.REPO_INFO.NAME}}
       #默认地址
       WRT_IP: 192.168.10.1
       #默认密码，仅作提示，修改无用
