@@ -39,9 +39,9 @@ UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
 #UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
 UPDATE_PACKAGE "ssr-plus" "fw876/helloworld" "master"
 
-if [[ $WRT_REPO == *"lede"* ]]; then
+#if [[ $WRT_REPO == *"lede"* ]]; then
 #	UPDATE_PACKAGE "alist" "sbwml/luci-app-alist" "main" # 2024年12月3日测试依旧报错
-fi
+#fi
 
 UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5"
 #UPDATE_PACKAGE "vnt" "lazyoop/networking-artifact" "main" "pkg"
