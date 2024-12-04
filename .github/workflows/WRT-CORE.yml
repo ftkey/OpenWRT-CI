@@ -171,6 +171,7 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
+          $GITHUB_WORKSPACE/Scripts/Feeds.sh
 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
