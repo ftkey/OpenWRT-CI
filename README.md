@@ -1,8 +1,8 @@
 # ER1-WRT-CI
 
-固件下载地址:
-https://github.com/ftkey/OpenWRT-CI/releases ,如需自定义, 请fork.
+只编译LEDE,如需OWRT|LibWRT,请前往对应的仓库下载.
 
+如需自定义, 请fork.
 
 只编译: 
 
@@ -24,18 +24,11 @@ https://github.com/ftkey/OpenWRT-CI/releases ,如需自定义, 请fork.
 ## 云编译OpenWRT固件
 [![QCA-ALL](https://github.com/ftkey/OpenWRT-CI/actions/workflows/QCA-ALL.yml/badge.svg)](https://github.com/ftkey/OpenWRT-CI/actions/workflows/QCA-ALL.yml)
 
-### 高通版(NSS) 
-    OWRT: https://github.com/VIKINGYFY/immortalwrt.git 
-    LibWRT: https://github.com/LiBwrt-op/openwrt-6.x.git 
-    LEDE: https://github.com/coolsnowwolf/lede.git 
 
 ## 编译时间
 固件自动每天早上4点自动编译
 
 ## 固件信息
-### OWRT & LibWRT: 
-    带NSS的6.6内核固件，默认主题为Argon；默认使用nftables防火墙（fw4）。
-    默认管理地址：192.168.10.1 默认用户：root 默认密码：无
 ### LEDE: 
     带NSS的6.1内核固件，默认主题为Argon；默认使用iptable防火墙（fw3）。
     默认管理地址：192.168.10.1 默认用户：root 默认密码：password
@@ -43,6 +36,21 @@ https://github.com/ftkey/OpenWRT-CI/releases ,如需自定义, 请fork.
     带NSS的6.1内核固件，默认主题为Argon；默认使用nftables防火墙（fw4）。
     默认管理地址：192.168.10.1 默认用户：root 默认密码：password
 
+## 固件下载
+### LEDE: 
+    <https://github.com/ftkey/OpenWRT-CI/releases>
+### LEDE-FW4:    
+    <https://github.com/ftkey/OpenWRT-CI/releases>
+### OWRT: 
+    <https://github.com/VIKINGYFY/OpenWRT-CI/releases>
+### LibWRT: 
+    <https://github.com/breeze303/openwrt-ci/releases>
+    
+### 固件源码(带NSS) 
+    LEDE: https://github.com/coolsnowwolf/lede.git     
+    OWRT: https://github.com/VIKINGYFY/immortalwrt.git 
+    LibWRT: https://github.com/LiBwrt-op/openwrt-6.x.git 
+    
 ## 刷机方法:
 ### LEDE:
     Hugo Uboot + 原厂CDT + 双分区GPT
@@ -67,8 +75,8 @@ https://github.com/ftkey/OpenWRT-CI/releases ,如需自定义, 请fork.
 <details><summary>CONFIG_PACKAGE_luci-app-xxx=y</summary>
     
     ```
-    CONFIG_PACKAGE_luci-app-ssr-plus=y // LEDE|LEDE-FW4|OWRT|LIBWRT
-    CONFIG_PACKAGE_luci-app-homeproxy=y // LEDE-FW4|OWRT|LIBWRT
+    CONFIG_PACKAGE_luci-app-ssr-plus=y // LEDE|LEDE-FW4
+    CONFIG_PACKAGE_luci-app-homeproxy=y // LEDE-FW4
     CONFIG_PACKAGE_luci-app-advancedplus=y  # 高级设置
     CONFIG_PACKAGE_luci-app-alist=y  # Alist网络服务
     CONFIG_PACKAGE_luci-app-cpufreq=y  # CPU频率策略控制
@@ -90,6 +98,8 @@ https://github.com/ftkey/OpenWRT-CI/releases ,如需自定义, 请fork.
     ```
 
 </details>
+
+
 
 
 ## THKS
