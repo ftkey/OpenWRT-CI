@@ -91,11 +91,9 @@ jobs:
           echo "VERSION_KERNEL=$VERSION_KERNEL" >> $GITHUB_ENV
           VERSION_LOG=$(git log --since="24 hours ago" --until="now" --pretty=format:"%h %s" --no-merges -- . ':(exclude)scripts/feeds')
           if [ -n "$VERSION_LOG" ] && echo "$VERSION_LOG" | grep -q .; then
-            echo "VERSION_LOG=$VERSION_LOG" >> $GITHUB_ENV
             echo "WRT_NEED_COMPILE=true" >> $GITHUB_ENV
           else
             echo "WRT_NEED_COMPILE=false" >> $GITHUB_ENV
-            echo "VERSION_LOG=暂无更新" >> $GITHUB_ENV
             echo "!!!过去24小时内无更新,跳过编译流程!!!"
           fi
 
@@ -267,8 +265,6 @@ jobs:
             - 固件内核版本：**${{ env.VERSION_KERNEL }}**
             - 固件编译前最后一次➦[主源码](${{ env.WRT_REPO }})更新记录
             - ${{ env.VERSION_INFO }}
-            - 源码更新日志
-              ${{ env.VERSION_LOG }}
 
 
 
