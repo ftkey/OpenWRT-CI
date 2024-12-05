@@ -1,6 +1,5 @@
 # ER1-WRT-CI
 
-只编译LEDE,如需OWRT|LibWRT,请前往对应的仓库下载.
 
 如需自定义, 请fork.
 
@@ -37,14 +36,19 @@
     默认管理地址：192.168.10.1 默认用户：root 默认密码：password
 
 ## 固件下载
+只编译LEDE，如需OWRT、LibWRT,请前往对应的仓库下载.
+
 ### LEDE: 
-    <https://github.com/ftkey/OpenWRT-CI/releases>
+<https://github.com/ftkey/OpenWRT-CI/releases>
+    
 ### LEDE-FW4:    
-    <https://github.com/ftkey/OpenWRT-CI/releases>
+<https://github.com/ftkey/OpenWRT-CI/releases>
+    
 ### OWRT: 
-    <https://github.com/VIKINGYFY/OpenWRT-CI/releases>
+<https://github.com/VIKINGYFY/OpenWRT-CI/releases>
+    
 ### LibWRT: 
-    <https://github.com/breeze303/openwrt-ci/releases>
+<https://github.com/breeze303/openwrt-ci/releases>
     
 ### 固件源码(带NSS) 
     LEDE: https://github.com/coolsnowwolf/lede.git     
