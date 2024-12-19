@@ -23,6 +23,7 @@ CONFIG_PACKAGE_ath11k-firmware-qcn9074=n
 CONFIG_PACKAGE_wpad-openssl=n
 CONFIG_PACKAGE_hostapd-common=n
 #组件调整
+CONFIG_TARGET_PER_DEVICE_ROOTFS=n
 CONFIG_PACKAGE_firewall4=n
 CONFIG_PACKAGE_firewall=y
 CONFIG_PACKAGE_iptables=y
