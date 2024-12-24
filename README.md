@@ -25,7 +25,9 @@
     dd if=/tmp/gpt_big.bin of=/dev/mmcblk0 bs=512 count=34 conv=fsync && echo "GPT刷写成功"
     echo "一次性刷写uboot&CDTGPT完成"
 
+<http://192.168.1.1/uboot.html>
 
+<http://192.168.1.1/gpt.html>
 
 ## 12M SSH下刷UBoot方法
 千万**不要批量处理**,确保每个命令是否正确执行
@@ -39,6 +41,18 @@
     dd if=/tmp/uboot.bin of=$(blkid -t PARTLABEL=0:APPSBL_1 -o device) conv=fsync && echo "U-Boot第二块分区刷写成功"
     dd if=/tmp/gpt_12m.bin of=/dev/mmcblk0 bs=512 count=34 conv=fsync && echo "GPT刷写成功"
     echo "一次性刷写uboot&GPT完成"
+
+<http://192.168.1.1/uboot.html>
+
+<http://192.168.1.1> 6m
+
+<http://192.168.1.1/big.html> 12m
+
+<http://192.168.1.1/img.html>
+
+<http://192.168.1.1/uboot.html>
+
+https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=8402269&highlight=IPQ60xx
 
 **最后拔电|插电|捅菊花!**
 
