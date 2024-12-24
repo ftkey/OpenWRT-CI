@@ -38,7 +38,7 @@
     dd if=/tmp/uboot.bin of=$(blkid -t PARTLABEL=0:APPSBL -o device) conv=fsync && echo "U-Boot第一块分区刷写成功"
     dd if=/tmp/uboot.bin of=$(blkid -t PARTLABEL=0:APPSBL_1 -o device) conv=fsync && echo "U-Boot第二块分区刷写成功"
     dd if=/tmp/gpt_12m.bin of=/dev/mmcblk0 bs=512 count=34 conv=fsync && echo "GPT刷写成功"
-    echo "一次性刷写uboot&CDTGPT完成"
+    echo "一次性刷写uboot&GPT完成"
 
 **最后拔电|插电|捅菊花!**
 
