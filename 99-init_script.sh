@@ -84,6 +84,9 @@ if [ -f "/etc/config/ddns" ]; then
         option ip_source 'interface'
         option ip_interface 'pppoe-wan'
         option interface 'pppoe-wan'
+	option check_interval '10'
+	option use_https '1'
+	option dns_server 'dns.alidns.com'
 	" >> /etc/config/ddns
 	echo "ddns自定义设置完成"
 else
