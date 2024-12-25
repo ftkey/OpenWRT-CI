@@ -14,7 +14,7 @@ if [ -d "$storage_path" ]; then
     cat << EOF > "$storage_path/auto_backup.sh"
     #!/bin/bash
     backupdatetime=\$(date +%Y%m%d_%H%M%S)
-    tar -czvf "$storage_path/openwrt-backup_\$backupdatetime-etc.tar.gz" /etc
+    sysupgrade -b "$storage_path/openwrt-backup_\$backupdatetime.tar.gz"
     $cmd $flags > "$storage_path/openwrt-backup_\$backupdatetime-soft-list.txt"
 EOF
 
