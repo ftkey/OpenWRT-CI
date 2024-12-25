@@ -3,19 +3,21 @@
 storage_dev_path=$(blkid | grep -E '^/dev/mmc' | grep -E 'PARTLABEL="storage"|PARTLABEL="primary"' | awk '{print $1}' | sed 's/:$//')
 storage_path=$(mount | grep "$storage_dev_path" | awk '{print $3}')
 
+if [ -d "$storage_path" ]; then
+cat << 'EOF' > "$storage_path/auto_backup.sh"
+#!/bin/bash
 if cmd=$(command -v apk) > /dev/null; then
     flags="list -I"
 else
     cmd=$(command -v opkg)
     flags="list-installed"
 fi
+EOF
 
-if [ -d "$storage_path" ]; then
-    cat << EOF > "$storage_path/auto_backup.sh"
-    #!/bin/bash
-    backupdatetime=\$(date +%Y%m%d_%H%M%S)
-    sysupgrade -b "$storage_path/openwrt-backup_\$backupdatetime.tar.gz"
-    $cmd $flags > "$storage_path/openwrt-backup_\$backupdatetime-soft-list.txt"
+cat << EOF >> "$storage_path/auto_backup.sh"
+backupdatetime=\$(date +%Y%m%d_%H%M%S)
+sysupgrade -b "$storage_path/openwrt-backup_\$backupdatetime.tar.gz"
+\$cmd \$flags > "$storage_path/openwrt-backup_\$backupdatetime-soft-list.txt"
 EOF
 
     chmod +x "$storage_path/auto_backup.sh"
