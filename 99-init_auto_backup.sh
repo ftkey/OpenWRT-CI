@@ -22,6 +22,7 @@ EOF
 
     chmod +x "$storage_path/auto_backup.sh"
     if [ -f "/etc/crontabs/root" ]; then
+        sed -i '/auto_backup.sh/d' /etc/crontabs/root
         echo "0 5 * * * $storage_path/auto_backup.sh" >> /etc/crontabs/root
         echo "crontabs自定义设置完成"
     fi
