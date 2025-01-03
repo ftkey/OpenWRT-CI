@@ -4,12 +4,15 @@
 echo "当前网关IP: $WRT_IP"
 
 
-
-#你没有神奇的NSS路由器我很难跟你解释
-USAGE_FILE="./package/lean/autocore/files/arm/sbin/usage"
-if [ -f "$USAGE_FILE" ]; then
-    cat $GITHUB_WORKSPACE/Scripts/patch/usage > $USAGE_FILE
+if [[ $TARGET == *"IPQ"* ]]; then
+	#你没有神奇的NSS路由器我很难跟你解释
+    USAGE_FILE="./package/lean/autocore/files/arm/sbin/usage"
+    if [ -f "$USAGE_FILE" ]; then
+        cat $GITHUB_WORKSPACE/Scripts/patch/usage > $USAGE_FILE
+    fi
 fi
+
+
 
 #修改默认主题
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
